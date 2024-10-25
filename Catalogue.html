@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Styles.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=KoHo:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <title>Course Catalogue - Elite Hands</title>
+</head>
+<body class="catalogue-page">
+    <nav class="navbar">
+        <div class="logo">
+            <a href="HomePage.html" style="text-decoration: none;">
+                <span class="elite">Elite</span><span class="hands">Hands</span>
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="Contact.html">Contact Us</a>
+            <a href="About.html">About</a>
+            <a href="Cart.html">Cart</a>
+        </div>
+    </nav>
+
+    <hr>
+
+    <div class="catalogue-container">
+        <div class="term-selector">
+            <button class="term-btn active" data-term="long">Long Term</button>
+            <button class="term-btn" data-term="short">Short Term</button>
+        </div>
+        <p class="term-description">These courses take place within a 6 month period</p>
+
+        <div id="courseGrid" class="course-grid">
+            
+    </div>
+
+    <!-- -------------------------------------------------------------------------------------------------------------------- -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get the term from URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const termParam = urlParams.get('term');
+            
+            if (termParam) {
+                // Find and click the corresponding button
+                const button = document.querySelector(`.term-btn[data-term="${termParam}"]`);
+                if (button) {
+                    // Remove active class from all buttons
+                    document.querySelectorAll('.term-btn').forEach(btn => 
+                        btn.classList.remove('active')
+                    );
+                    // Add active class to selected button
+                    button.classList.add('active');
+                    // Display the courses
+                    displayCourses(termParam);
+                }
+            }
+        });
+
+        // Course data
+        const courses = [
+            // Long Courses
+            {
+                id: 1,
+                title: "First Aid",
+                price: 1499.99,
+                duration: "long",
+                level: "Beginner",
+                certification: "Elite Hands First Aid Certificate",
+                image: "./assets/FirstAidCourse.png",
+                
+            },
+            {
+                id: 2,
+                title: "Sewing",
+                price: 1499.99,
+                duration: "long",
+                level: "Beginner to Intermediate",
+                certification: "Elite Hands Professional Sewing Certificate",
+                image: "./assets/SewingCourse.png",
+                
+            },
+            {
+                id: 3,
+                title: "Landscaping",
+                price: 1499.99,
+                duration: "long",
+                level: "Intermediate",
+                certification: "Elite Hands Landscaping Certificate",
+                image: "./assets/LandScapingCourse.png",
+                description: "Transform outdoor spaces into beautiful, functional landscapes with our comprehensive Landscaping course. Whether you're looking to enhance your skills as a gardener or aiming to specialize in landscape design, this course provides the knowledge and practical skills you need to excel in the field.",
+                
+            },
+            {
+                id: 4,
+                title: "Life Skills",
+                price: 1499.99,
+                duration: "long",
+                level: "Beginner",
+                certification: "Elite Hands Life Skills Certificate",
+                image: "./assets/LifeSkills.jpg",
+                
+            },
+            // Short Courses
+            {
+                id: 5,
+                title: "Cooking",
+                price: 749.99,
+                duration: "short",
+                level: "Beginner",
+                certification: "Elite Hands Culinary Basics Certificate",
+                image: "./assets/CookingCourse.jpg",
+                
+            },
+            {
+                id: 6,
+                title: "Child Minding",
+                price: 749.99,
+                duration: "short",
+                level: "Beginner",
+                certification: "Elite Hands Child Care Certificate",
+                image: "./assets/ChildMindingCourse.jpg",
+                
+            },
+            {
+                id: 7,
+                title: "Garden Maintenance",
+                price: 749.99,
+                duration: "short",
+                level: "Beginner",
+                certification: "Elite Hands Garden Maintenance Certificate",
+                image: "./assets/GardeningCourse.jpg",
+                
+            }
+        ];
+
+        // Function to create course card HTML
+        function createCourseCard(course) {
+            return `
+                <div class="course-card" data-course-id="${course.id}">
+                    <img src="${course.image}" alt="${course.title} Course">
+                    <div class="course-info">
+                        <h3>${course.title}</h3>
+                        <p class="price">R${course.price.toFixed(2)}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        //
+
+        // Function to filter and display courses
+        function displayCourses(term) {
+            const courseGrid = document.getElementById('courseGrid');
+            const filteredCourses = courses.filter(course => course.duration === term);
+            
+            courseGrid.innerHTML = filteredCourses.map(course => 
+                createCourseCard(course)
+            ).join('');
+
+            // Add click event listeners to the new cards
+            document.querySelectorAll('.course-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const courseId = parseInt(card.dataset.courseId);
+                    window.location.href = `Course.html?id=${courseId}`;
+                    console.log(`Clicked course ${courseId}`);
+                });
+            });
+        }
+
+        // Set up term selector buttons
+        document.querySelectorAll('.term-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                document.querySelectorAll('.term-btn').forEach(btn => 
+                    btn.classList.remove('active')
+                );
+                button.classList.add('active');
+
+                // Display corresponding courses
+                const term = button.dataset.term;
+                displayCourses(term);
+            });
+        });
+
+        // Initial display (long term courses)
+        displayCourses('long');
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Styles.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- importing fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=KoHo:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    
+    <title>Contact</title>
+</head>
+<body class="contactpage">
+    <nav class="Contactnavbar">
+        <div class="logo">
+            <a href="HomePage.html" style="text-decoration: none;">
+                <span class="elite">Elite</span><span class="hands">Hands</span>
+            </a>
+        </div>
+        <div class="Contactnav-links">
+            <div class="dropdown">
+                <a class="clickable" href="#">Our Courses</a>
+                <div class="dropdown-content">
+                    <a href="Catalogue.html?term=short">Short-term course</a>
+                    <a href="Catalogue.html?term=long">Long-term course</a>
+                </div>
+            </div>
+            <a class="clickable" href="FAQ.html">FAQ</a>
+            <a class="clickable" href="About.html">About</a>
+            <a class="clickable" href="Cart.html">Cart</a>
+        </div>
+    </nav>
+
+    <hr>
+
+    <div class="contact-section">
+        <div class="ourDetails">
+            <h1>Contact Us</h1>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3579.680411529532!2d28.0413507756489!3d-26.207072577074776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950e985be44add%3A0xfa4a15d862cb4b8b!2s123%20Marshall%20St%2C%20Marshalltown%2C%20Johannesburg%2C%202107!5e0!3m2!1sen!2sza!4v1729782735206!5m2!1sen!2sza" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <p>📍 123 Marshall Street, Marshalltown, Johannesburg, 2001</p>
+            <p>📞 +1 (555) 123-4567</p>
+            <p>⏰ Sundays - Fridays 8am-5pm</p>
+        </div>
+
+        <div class="LetsChat">
+            <form action="/action_page.php" method="post">
+            <input type="text" id="fname" name="fname" placeholder="First name">
+            <input type="text" id="lname" name="lname" placeholder="Last name"><br><br>
+            <input type="text" id="email" name="email" placeholder="Email"><br><br>
+            <textarea id="textInput" name="textInput" rows="4" cols="50" placeholder="Talk to us"></textarea>
+            <br>
+            <input type="reset" value="Submit" >
+            </form>
+        </div>
+    </div>
+</body>
+</html>

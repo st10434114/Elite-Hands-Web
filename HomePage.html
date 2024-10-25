@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Styles.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=KoHo:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <title>EliteHands</title>
+</head>
+<body class="index-page">
+    <nav class="navbar">
+        <div class="logo">
+            <span class="elite">Elite</span><span class="hands">Hands</span>
+        </div>
+        <div class="nav-links">
+            <div class="dropdown">
+                <a class="clickable" href="#">Our Courses</a>
+                <div class="dropdown-content">
+                    <a href="Catalogue.html?term=short">Short-term course</a>
+                    <a href="Catalogue.html?term=long">Long-term course</a>
+                </div>
+            </div>
+            <a href="FAQ.html">FAQ</a>
+            <a href="Contact.html">Contact Us</a>
+            <a href="About.html">About</a>
+            <!-- <a href="Cart.html">Cart</a> -->
+            <div id="cartDropdown" class="cart-dropdown">
+                <div class="cart-header">
+                    <span class="cart-title">Cart</span>
+                    <span class="close-cart-btn" onclick="closeCart()">X</span>
+                </div>
+                <div class="cart-item">
+                    <img src="path-to-your-image.jpg" alt="Landscaping course" class="cart-item-image">
+                    <div class="cart-item-details">
+                        <h4>LandScaping course</h4>
+                        <p>R1499,99</p>
+                        <button class="delete-cart-item" onclick="removeFromCart(0)">Delete</button>
+                    </div>
+                </div>
+                <div class="cart-summary">
+                    <p>SubTotal: <span id="subtotal">R1499,99</span></p>
+                    <p>Discount: <span id="discount">R0,00</span></p>
+                </div>
+                <button class="checkout-btn">Checkout</button>
+            </div>
+        </div>
+    </nav>
+    <main class="hero">
+        <div class="hero-content">
+            <h1>Your Success Starts Here</h1>
+            <ul class="benefits-list">
+                <li>Professional certification in domestic services</li>
+                <li>Learn advanced techniques from industry experts</li>
+                <li>Boost your earning potential</li>
+                <li>Save up to 15% with our multi-course packages</li>
+            </ul>
+            <div class="cta-buttons">
+                <button class="btn primary" id="browseCourses">Browse courses</button>
+                <button class="btn secondary" id="learnMore">Learn More</button>
+            </div>
+        </div>
+        <div class="hero-image-container">
+            <img class="hero-image" src="./assets/EliteHandsLogo.png" alt="Elite Hands Logo">
+        </div>
+    </main>
+
+    <section class="items-container">
+        <div class="item courselist-HP hidden">
+            <div class="logo">
+                <span class="elite">Elite</span><span class="hands">Hands</span>
+            </div>
+            <p>At Elite Hands, we believe in empowering domestic professionals with top-tier skills training. Our comprehensive program offers:</p>
+            <ul class="course-list">
+                <li>Advanced cleaning techniques</li>
+                <li>Modern home organization</li>
+                <li>Professional laundry care</li>
+                <li>Garden maintenance and design</li>
+                <li>Child and elderly care</li>
+                <li>Home Safety and security</li>
+            </ul>
+        </div>
+        <div class="item courseimage-HP">
+            <img src="./assets/DomesticPoint.jpg" alt="Cleaning demonstration">
+        </div>
+    </section>
+
+    <section class="items-container">
+        <div class="item courselist-HP hidden">
+            <div class="logo">
+                <span class="elite">Elite</span><span class="hands">Hands</span>
+            </div>
+            <p>Benefits of Training with Us:</p>
+            <ul class="course-list">
+                <li>Industry-recognized certification</li>
+                <li>Practical, hands-on learning</li>
+                <li>Flexible course schedules</li>
+                <li>Expert instructors</li>
+                <li>Career advancement support</li>
+                <li>Access to better job opportunities</li>
+            </ul>
+        </div>
+        <div class="item courseimage-HP">
+            <img src="./assets/GraduationPoint.jpg" alt="Cleaning demonstration">
+        </div>
+    </section>
+
+    <section class="items-container">
+        <div class="item courselist-HP hidden">
+            <div class="logo">
+                <span class="elite">Elite</span><span class="hands">Hands</span>
+            </div>
+            <p>Smart Savings:</p>
+            <ul class="course-list">
+                <li>Take multiple courses and save</li>
+                <li>5% off for two courses</li>
+                <li>10% off for three courses</li>
+                <li>15% off for three courses</li>
+            </ul>
+        </div>
+        <div class="item courseimage-HP">
+            <img src="./assets/SavingsPoint.jpg" alt="Cleaning demonstration">
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Elite Hands Academy. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Javascript for the button click handling
+        const browseCoursesBtn = document.getElementById('browseCourses');
+        const learnMoreBtn = document.getElementById('learnMore');
+        
+        browseCoursesBtn.addEventListener('click', () => {
+            window.location.href = 'Catalogue.html';
+        });
+        
+        learnMoreBtn.addEventListener('click', () => {
+            window.location.href = 'About.html';
+        });
+
+        // Javasctipt for the fade in effect of the Home page info
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                console.log(entry)
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                } else {
+                    entry.target.classList.remove('show');
+                }
+            });
+        });
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+
+
+        // ----------------------------------------------------------
+        // Cart data and display functions
+        function updateCart() {
+            // Retrieve cart items from localStorage
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItems = document.getElementById('cartItems');
+            const totalPriceEl = document.getElementById('totalPrice');
+            const discountEl = document.getElementById('discount');
+            const finalPriceEl = document.getElementById('finalPrice');
+
+            cartItems.innerHTML = '';
+            let total = 0;
+
+            // Populate cart items list
+            cart.forEach(course => {
+                total += course.price;
+                const li = document.createElement('li');
+                li.textContent = `${course.title} - R${course.price.toFixed(2)}`;
+                cartItems.appendChild(li);
+            });
+
+            // Calculate discount and final price
+            const discount = calculateDiscount(cart.length);
+            const finalPrice = total * (1 - discount);
+
+            // Update display elements
+            totalPriceEl.textContent = `Total: R${total.toFixed(2)}`;
+            discountEl.textContent = `Discount: ${(discount * 100).toFixed(0)}%`;
+            finalPriceEl.textContent = `Final Price: R${finalPrice.toFixed(2)}`;
+        }
+
+        function calculateDiscount(courseCount) {
+            if (courseCount >= 3) {
+                return 0.15; // 15% discount for 3+ courses
+            } else if (courseCount === 2) {
+                return 0.10; // 10% discount for 2 courses
+            } else if (courseCount === 1) {
+                return 0.05; // 5% discount for 1 course
+            }
+            return 0;
+        }
+
+        // Initialize cart display on page load
+        document.addEventListener('DOMContentLoaded', updateCart);
+
+        // -----------------------------------------------------------------------------
+        // Show the cart dropdown
+function openCart() {
+    document.getElementById("cartDropdown").style.display = "block";
+}
+
+// Close the cart dropdown
+function closeCart() {
+    document.getElementById("cartDropdown").style.display = "none";
+}
+
+// Add this function to remove an item from the cart
+function removeFromCart(index) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.splice(index, 1);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    
+    // Update cart display or remove item
+    updateCart();
+}
+
+// Function to update cart after an item is removed
+function updateCart() {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    // Update subtotal and any other UI changes here
+    let subtotal = cart.reduce((total, item) => total + item.price, 0);
+    document.getElementById('subtotal').textContent = `R${subtotal.toFixed(2)}`;
+
+    // Add logic to display cart items, clear cart display if empty, etc.
+}
+
+
+    </script>
+</body>
+</html>

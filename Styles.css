@@ -1,0 +1,733 @@
+:root {
+  --themeOne-color: #F3F8F2;
+
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "KoHo", sans-serif;
+}
+
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^Animations^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+/* Fade in transition */
+@keyframes transitionIn {
+  from{
+    opacity: 0;
+    transform: rotateX(-10deg);
+  }
+
+  to{
+    opacity: 1;
+    transform: rotateX(0);
+  }
+}
+
+/* Scrolling animation -homepage */
+.hidden {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(-100%);
+  transition: all 0.75s;
+}
+.show {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+}
+
+
+/*===========================================================================================================================*/
+/*----------------------------------------------------------HomePage Page-------------------------------------------------- */
+
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^Navbar styling^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 4rem;
+  background-color: var(--themeOne-color);
+}
+
+.logo {
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+.logo .elite {
+  color: black;
+}
+
+.logo .hands {
+  color: #48982B;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  margin-right: 3rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: black;
+  font-size: 2rem;
+  transition: color 0.3s ease;
+}
+/* container to position the dropdown content */
+.dropdown{
+  position: relative;
+  display: inline-block;
+}
+/* Dropdown content( hidden by default ) */
+.dropdown-content{
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 250px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+/* Links insidde the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+/* Showing the dropdown menu on hover */
+.dropdown:hover .dropdown-content{
+  display: block;
+}
+.dropdown-content a:hover{
+  background-color: #f1f1f1;
+  text-decoration: none;
+  color: black;
+}
+
+.index-page{
+  background-color: var(--themeOne-color);
+}
+
+/* Cart dropdown Css */
+.cart-dropdown {
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  width: 300px;
+  background-color: #1c1c1c;
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  display: none;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.cart-title {
+  font-size: 18px;
+}
+
+.close-cart-btn {
+  cursor: pointer;
+  font-size: 16px;
+  background-color: transparent;
+  border: none;
+  color: lightgreen;
+}
+
+.cart-item {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.cart-item-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 5px;
+  margin-right: 15px;
+}
+
+.cart-item-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.delete-cart-item {
+  background-color: transparent;
+  border: 1px solid lightblue;
+  color: lightblue;
+  cursor: pointer;
+  padding: 5px;
+  font-size: 12px;
+}
+
+.cart-summary {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.checkout-btn {
+  width: 100%;
+  background-color: lightblue;
+  border: none;
+  color: black;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+
+
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^Hero Section Layout^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4rem;
+  min-height: calc(100vh - 80px);
+  background-color: var(--themeOne-color);
+  animation: transitionIn 1s;
+}
+
+.hero-content {
+  flex: 1;
+  max-width: 600px;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: black;
+}
+
+.benefits-list {
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
+.benefits-list li {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.benefits-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #4D7C0F;
+}
+
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^Button styles^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn.primary {
+  background-color: #6B96C3;
+  color: white;
+}
+
+.btn.secondary {
+  background-color: transparent;
+  border: 1px solid #6B96C3;
+  color: #6B96C3;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^Hero image styles^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+.hero-image-container {
+  flex: 1;
+  max-width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+}
+
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^Items container section^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+.items-container {
+  background-color: var(--themeOne-color);
+  padding: 0 4rem ;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.courselist-HP {
+  flex: 1;
+  font-size: 3rem;
+  padding-top: 10rem;
+}
+
+.courselist-HP p {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+.course-list {
+  list-style: none;
+}
+
+.course-list li {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.course-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #4D7C0F;
+}
+
+.courseimage-HP {
+  flex: 1;
+  display: flex;
+  align-items: start;
+}
+
+.courseimage-HP img {
+  width: 100%;
+  height: 80%;
+  border: 10px ridge;
+}
+
+/* Footer Styles */
+footer {
+  background: #333;
+  color: #fff;
+  padding: 1em 0;
+  text-align: center;
+  width: 100%;
+}
+
+/*===========================================================================================================================*/
+/*------------------------------------------------------------Contact Page-------------------------------------------------- */
+body.contactpage {
+  background-image: url('/assets/ContactPageBackground.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  color: white;
+  font-family: "KoHo", sans-serif;
+  animation: transitionIn 0.75s;
+}
+
+.Contactnavbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 4rem;
+}
+
+.Contactnav-links {
+  display: flex;
+  gap: 2.5rem;
+  margin-right: 3rem;
+}
+
+.Contactnav-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.8rem;
+  transition: all 0.3s ease;
+}
+
+.Contactnav-links a:hover {
+  color: #6B96C3;
+  transform: translateY(-2px);
+}
+
+.contact-section {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas:
+    "ourDetails ourDetails letsChat letsChat"
+    "ourDetails ourDetails letsChat letsChat"
+    "ourDetails ourDetails letsChat letsChat";
+  gap: 2rem;
+  padding: 4rem;
+  background-color: rgba(0, 0, 0, 0.6); /* Add semi-transparent background */
+  margin: 2rem 4rem;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+.ourDetails {
+  grid-area: ourDetails;
+  padding: 2rem;
+}
+
+.ourDetails h1 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #6B96C3;
+}
+
+.ourDetails iframe {
+  width: 100%;
+  height: 300px;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+}
+
+.ourDetails p {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.LetsChat {
+  grid-area: letsChat;
+  padding: 2rem;
+}
+
+.LetsChat form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.LetsChat input[type="text"],
+.LetsChat input[type="email"],
+.LetsChat textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 0;
+  border: none;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 1rem;
+  border-radius: 5px 5px 0 0;
+  transition: all 0.3s ease;
+}
+
+.LetsChat input:focus,
+.LetsChat textarea:focus {
+  outline: none;
+  border-bottom-color: #6B96C3;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.LetsChat textarea {
+  resize: vertical;
+  min-height: 120px;
+  border-radius: 5px;
+}
+
+.LetsChat input[type="reset"] {
+  width: auto;
+  padding: 12px 40px;
+  border: none;
+  border-radius: 4px;
+  background-color: #6B96C3;
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+  margin-top: 1rem;
+}
+
+.LetsChat input[type="reset"]:hover {
+  background-color: #5a81aa;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Add placeholder color */
+::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+
+/*===========================================================================================================================*/
+/*----------------------------------------------------------Catalogue Page-------------------------------------------------- */
+.catalogue-page{
+  background-color: #F3F8F2;
+  animation: transitionIn 0.75s;
+}
+
+.catalogue-container {
+  padding: 2rem 5rem;
+}
+
+.term-selector {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.term-btn {
+  padding: 0.8rem 2rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.term-btn.active {
+  background-color: #6B96C3;
+  color: white;
+}
+
+.term-btn:not(.active) {
+  background-color: #e0e0e0;
+  color: black;
+}
+
+.term-description {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 3rem;
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Fixed 3 columns */
+  gap: 2rem;
+  padding: 0 2rem;
+  max-width: 2000px; /* Optional: adds a max width to maintain consistent card sizes */
+  margin: 0 auto; /* Centers the grid */;
+  
+}
+
+.course-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  animation: transitionIn 1s;
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
+  box-shadow: #333;
+}
+
+.course-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.course-info {
+  padding: 1rem;
+}
+
+.course-info h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.price {
+  font-size: 1.2rem;
+  color: #333;
+  font-weight: 600;
+}
+
+/*===========================================================================================================================*/
+/*------------------------------------------------------------FAQ Page------------------------------------------------------ */
+
+body.faq-page{
+  background-color: var(--themeOne-color);
+}
+.container{
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  animation: transitionIn 0.75s;
+}
+.containr h1{
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.faq-question {
+  margin-bottom: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.faq-question summary {
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 1rem;
+  font-weight: 500;
+}
+
+.faq-answer {
+  padding: 1rem;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+/*===========================================================================================================================*/
+/*------------------------------------------------------------Course Page------------------------------------------------------ */
+
+body.course-page {
+  background-color: var(--themeOne-color);
+  margin: 0;
+  padding: 0;
+}
+
+.course-detail-container {
+  display: flex;
+  align-items: flex-start; /* Pushes content higher than center */
+  justify-content: center;
+  min-height: 100vh; /* Full screen height */
+  margin-top: 10vh; /* Adjust the vertical positioning */
+}
+
+.course-overview {
+  display: flex;
+  gap: 4rem;
+  max-width: 1400px;
+  justify-content: center; /* Horizontal centering within the container */
+  align-items: center; /* Vertical centering for the items inside */
+  animation: transitionIn 1s;
+}
+
+.overview-content {
+  flex: 2;
+}
+
+.overview-content h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.overview-content p {
+  font-size: 2rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.learning-outcomes {
+  margin-top: 3rem;
+}
+
+.learning-outcomes h3 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.learning-outcomes ul {
+  list-style: none;
+}
+
+.learning-outcomes li {
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.learning-outcomes li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #4D7C0F;
+}
+
+.course-card-details {
+  flex: 1;
+  background: white;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+}
+
+.course-card-details img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.price {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 1rem 0;
+}
+
+.course-info {
+  margin: 1.5rem 0;
+}
+
+.course-info p {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.add-basket-btn {
+  width: 100%;
+  padding: 1rem;
+  background-color: #6B96C3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-basket-btn:hover {
+  background-color: #5a81aa;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/*===========================================================================================================================*/
+/*------------------------------------------------------------About Page------------------------------------------------------ */
+
+.about-page{
+  background-color: var(--themeOne-color);
+}
+.about-container{
+  text-align: center;
+  height: 100hv;
+}

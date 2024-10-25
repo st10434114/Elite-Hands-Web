@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Styles.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- importing fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=KoHo:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    
+    <title>Document</title>
+</head>
+<body class="course-page">
+    <nav class="navbar">
+        <div class="logo">
+            <a href="HomePage.html" style="text-decoration: none;">
+                <span class="elite">Elite</span><span class="hands">Hands</span>
+            </a>
+        </div>
+        <div class="nav-links">
+            <div class="dropdown">
+                <a class="clickable" href="#">Our Courses</a>
+                <div class="dropdown-content">
+                    <a href="Catalogue.html?term=short">Short-term course</a>
+                    <a href="Catalogue.html?term=long">Long-term course</a>
+                </div>
+            </div>
+            <a class="clickable" href="FAQ.html">FAQ</a>
+            <a class="clickable" href="Contact.html">Contact Us</a>
+            <a class="clickable" href="About.html">About</a>
+            <a class="clickable" href="Cart.html">Cart</a>
+        </div>
+    </nav>
+
+    <hr>
+
+    <!-- CourseDetail.html -->
+    <div class="course-detail-container">
+        <div class="course-overview">
+            <div class="overview-content">
+                <h2 id="courseTitle"></h2>
+                <p id="courseDescription"></p>
+                
+                <div class="learning-outcomes">
+                    <h3>What You'll Learn:</h3>
+                    <ul id="courseOutcomes"></ul>
+                </div>
+            </div>
+            
+            <div class="course-card-details">
+                <img id="courseImage" alt="Course Image">
+                <p class="price" id="coursePrice"></p>
+                <div class="course-info">
+                    <p id="courseDuration"></p>
+                    <p id="courseLevel"></p>
+                    <p id="courseCertification"></p>
+                </div>
+                <button class="add-basket-btn">Add to Basket</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // Course data (use your existing courses array)
+        const courses = [
+            // Long Courses
+    {
+        id: 1,
+        title: "First Aid",
+        price: 1499.99,
+        duration: "6 months",
+        level: "Beginner",
+        certification: "Elite Hands First Aid Certificate",
+        image: "./assets/FirstAidCourse.png",
+        description: "Master essential first aid skills and emergency response techniques in our comprehensive course. Learn to handle medical emergencies with confidence and provide critical care when needed. This course equips you with both theoretical knowledge and practical skills required in emergency situations.",
+        outcomes: [
+            "Basic life support and CPR techniques",
+            "Wound care and bandaging",
+            "Emergency response protocols",
+            "Assessment of medical emergencies",
+            "Treatment of common injuries",
+            "Handling of medical equipment"
+        ]
+    },
+    {
+        id: 2,
+        title: "Sewing",
+        price: 1499.99,
+        duration: "6 months",
+        level: "Beginner to Intermediate",
+        certification: "Elite Hands Professional Sewing Certificate",
+        image: "./assets/SewingCourse.png",
+        description: "Transform your passion for sewing into professional expertise. This comprehensive course covers everything from basic stitching to advanced garment construction. Perfect for those looking to start a career in garment making or enhance their domestic sewing skills.",
+        outcomes: [
+            "Machine and hand sewing techniques",
+            "Pattern reading and modification",
+            "Fabric selection and care",
+            "Garment construction methods",
+            "Professional finishing techniques",
+            "Basic alterations and repairs"
+        ]
+    },
+    {
+        id: 3,
+        title: "Landscaping",
+        price: 1499.99,
+        duration: "6 months",
+        level: "Intermediate",
+        certification: "Elite Hands Landscaping Certificate",
+        image: "./assets/LandScapingCourse.png",
+        description: "Transform outdoor spaces into beautiful, functional landscapes with our comprehensive Landscaping course. Whether you're looking to enhance your skills as a gardener or aiming to specialize in landscape design, this course provides the knowledge and practical skills you need to excel in the field.",
+        outcomes: [
+            "Indigenous and exotic plants and trees",
+            "Fixed structures",
+            "Balancing of plants and trees in a garden",
+            "Aesthetics of plant shapes and colours",
+            "Garden layout"
+        ]
+    },
+    {
+        id: 4,
+        title: "Life Skills",
+        price: 1499.99,
+        duration: "6 months",
+        level: "Beginner",
+        certification: "Elite Hands Life Skills Certificate",
+        image: "./assets/LifeSkills.jpg",
+        description: "Develop essential life and professional skills in this comprehensive course. From personal finance to professional communication, gain the confidence and capabilities needed for success in both personal and professional environments.",
+        outcomes: [
+            "Personal finance management",
+            "Professional communication",
+            "Time management techniques",
+            "Problem-solving strategies",
+            "Basic computer literacy",
+            "Workplace etiquette"
+        ]
+    },
+    // Short Courses
+    {
+        id: 5,
+        title: "Cooking",
+        price: 749.99,
+        duration: "6 weeks",
+        level: "Beginner",
+        certification: "Elite Hands Culinary Basics Certificate",
+        image: "./assets/CookingCourse.jpg",
+        description: "Learn to prepare nutritious and delicious meals with confidence. This course covers fundamental cooking techniques, meal planning, and kitchen safety, perfect for those looking to improve their culinary skills.",
+        outcomes: [
+            "Basic cooking techniques",
+            "Meal planning and preparation",
+            "Kitchen safety and hygiene",
+            "Nutritional basics",
+            "Food storage practices",
+            "Budget-friendly cooking"
+        ]
+    },
+    {
+        id: 6,
+        title: "Child Minding",
+        price: 749.99,
+        duration: "6 weeks",
+        level: "Beginner",
+        certification: "Elite Hands Child Care Certificate",
+        image: "./assets/ChildMindingCourse.jpg",
+        description: "Gain essential skills in child care and development. Learn to provide safe, nurturing care for children of various ages, understanding their developmental needs and appropriate care techniques.",
+        outcomes: [
+            "Child safety and first aid",
+            "Age-appropriate activities",
+            "Basic childhood development",
+            "Nutrition and meal planning",
+            "Behavior management",
+            "Emergency procedures"
+        ]
+    },
+    {
+        id: 7,
+        title: "Garden Maintenance",
+        price: 749.99,
+        duration: "6 weeks",
+        level: "Beginner",
+        certification: "Elite Hands Garden Maintenance Certificate",
+        image: "./assets/GardeningCourse.jpg",
+        description: "Master the essentials of garden maintenance and basic landscaping. Learn proper techniques for plant care, pruning, and garden upkeep to maintain beautiful and healthy outdoor spaces.",
+        outcomes: [
+            "Basic plant care principles",
+            "Pruning techniques",
+            "Soil maintenance",
+            "Pest control basics",
+            "Seasonal planning",
+            "Tool maintenance and safety"
+        ]
+    }
+        ];
+
+        // Function to add course to cart in localStorage
+        function addToCart(course) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(course);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${course.title} has been added to the cart.`);
+        }
+
+        // Display course details and attach "Add to Cart" functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const courseId = parseInt(urlParams.get('id'));
+
+            const course = courses.find(c => c.id === courseId); // 'courses' is your list of courses
+            
+            if (course) {
+                document.getElementById('courseTitle').textContent = `${course.title} Overview`;
+                document.getElementById('courseDescription').textContent = course.description;
+                document.getElementById('courseImage').src = course.image;
+                document.getElementById('coursePrice').textContent = `R${course.price.toFixed(2)}`;
+                document.getElementById('courseDuration').textContent = `Duration: ${course.duration}`;
+                document.getElementById('courseLevel').textContent = `Level: ${course.level}`;
+                document.getElementById('courseCertification').textContent = `Certification: ${course.certification}`;
+
+                const outcomesList = document.getElementById('courseOutcomes');
+                course.outcomes.forEach(outcome => {
+                    const li = document.createElement('li');
+                    li.textContent = outcome;
+                    outcomesList.appendChild(li);
+                });
+
+                // Add "Add to Cart" button functionality
+                document.querySelector('.add-basket-btn').addEventListener('click', () => {
+                    addToCart(course);
+                    updateCart(); // Update cart display immediately
+                });
+            }
+        });
+    </script>
+</body>
+</html>
