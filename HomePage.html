@@ -27,7 +27,27 @@
             <a href="Contact.html">Contact Us</a>
             <a href="About.html">About</a>
             <!-- <a href="Cart.html">Cart</a> -->
-            <div id="cartDropdown" class="cart-dropdown">
+            <button class="cart-button">Cart</button>
+
+            <div class="cart-dropdown">
+                <div class="cart-item">
+                    <img src="course-image.jpg" alt="Course Image">
+                    <div>
+                        <p>Landscaping Course</p>
+                        <p>R1499,99</p>
+                    </div>
+                    <button class="delete-btn">Delete</button>
+                </div>
+            
+                <div class="cart-summary">
+                    <p>SubTotal: <span id="subtotal">R0,00</span></p>
+                    <p>Discount: <span id="discount">R0,00</span></p>
+                    <p>Total: <span id="total">R0,00</span></p>
+                </div>
+            
+                <button class="checkout-btn">Checkout</button>
+            </div>
+            <!-- <div id="cartDropdown" class="cart-dropdown">
                 <div class="cart-header">
                     <span class="cart-title">Cart</span>
                     <span class="close-cart-btn" onclick="closeCart()">X</span>
@@ -45,7 +65,7 @@
                     <p>Discount: <span id="discount">R0,00</span></p>
                 </div>
                 <button class="checkout-btn">Checkout</button>
-            </div>
+            </div> -->
         </div>
     </nav>
     <main class="hero">
@@ -205,35 +225,34 @@
 
         // -----------------------------------------------------------------------------
         // Show the cart dropdown
-function openCart() {
-    document.getElementById("cartDropdown").style.display = "block";
-}
+        function openCart() {
+            document.getElementById("cartDropdown").style.display = "block";
+        }
 
-// Close the cart dropdown
-function closeCart() {
-    document.getElementById("cartDropdown").style.display = "none";
-}
+        // Close the cart dropdown
+        function closeCart() {
+            document.getElementById("cartDropdown").style.display = "none";
+        }
 
-// Add this function to remove an item from the cart
-function removeFromCart(index) {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    cart.splice(index, 1);
-    localStorage.setItem('cart', JSON.stringify(cart));
-    
-    // Update cart display or remove item
-    updateCart();
-}
+        // Add this function to remove an item from the cart
+        function removeFromCart(index) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            
+            // Update cart display or remove item
+            updateCart();
+        }
 
-// Function to update cart after an item is removed
-function updateCart() {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    
-    // Update subtotal and any other UI changes here
-    let subtotal = cart.reduce((total, item) => total + item.price, 0);
-    document.getElementById('subtotal').textContent = `R${subtotal.toFixed(2)}`;
+        // Function to toggle cart dropdown visibility
+        function toggleCartDropdown() {
+            const cartDropdown = document.querySelector('.cart-dropdown');
+            cartDropdown.classList.toggle('show');
+        }
 
-    // Add logic to display cart items, clear cart display if empty, etc.
-}
+        // Add event listener for the cart button
+        document.querySelector('.cart-button').addEventListener('click', toggleCartDropdown);
+
 
 
     </script>

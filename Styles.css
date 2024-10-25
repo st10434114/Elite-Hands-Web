@@ -111,78 +111,58 @@
 }
 
 /* Cart dropdown Css */
+/* Cart dropdown styling */
 .cart-dropdown {
-  position: absolute;
-  top: 50px;
-  right: 10px;
-  width: 300px;
-  background-color: #1c1c1c;
+  position: absolute; /* Ensure it’s positioned correctly */
+  top: 50px; /* Adjust based on where you want it to appear */
+  right: 0; /* Align it to the right of the screen */
+  background-color: #222; /* Dark background for visibility */
   color: white;
-  padding: 20px;
-  border-radius: 8px;
-  display: none;
+  width: 350px; /* Set an appropriate width */
+  border: 1px solid #444;
+  border-radius: 5px;
+  padding: 10px;
+  z-index: 1000; /* Make sure it's on top of other elements */
+  display: none; /* Hidden by default, we’ll show it with JS */
 }
 
-.cart-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.cart-title {
-  font-size: 18px;
-}
-
-.close-cart-btn {
-  cursor: pointer;
-  font-size: 16px;
-  background-color: transparent;
-  border: none;
-  color: lightgreen;
+.cart-dropdown.show {
+  display: block; /* Show the cart dropdown when triggered */
 }
 
 .cart-item {
-  display: flex;
-  margin-bottom: 20px;
+  display: flex; /* Align items in a row */
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #555;
 }
 
-.cart-item-image {
-  width: 80px;
-  height: 80px;
+.cart-item img {
+  max-width: 80px; /* Adjust size of course image */
   border-radius: 5px;
-  margin-right: 15px;
 }
 
-.cart-item-details {
-  display: flex;
-  flex-direction: column;
-}
-
-.delete-cart-item {
-  background-color: transparent;
-  border: 1px solid lightblue;
-  color: lightblue;
-  cursor: pointer;
-  padding: 5px;
-  font-size: 12px;
+.cart-item p {
+  margin: 0;
 }
 
 .cart-summary {
   margin-top: 10px;
-  display: flex;
-  justify-content: space-between;
-  font-size: 14px;
 }
 
 .checkout-btn {
   width: 100%;
-  background-color: lightblue;
-  border: none;
-  color: black;
   padding: 10px;
+  background-color: #336699;
+  color: white;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
+}
+
+.checkout-btn:hover {
+  background-color: #335577;
 }
 
 
