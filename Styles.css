@@ -62,7 +62,6 @@
 .logo .hands {
   color: #48982B;
 }
-
 .nav-links {
   display: flex;
   gap: 2.5rem;
@@ -110,61 +109,178 @@
   background-color: var(--themeOne-color);
 }
 
-/* Cart dropdown Css */
-/* Cart dropdown styling */
-.cart-dropdown {
-  position: absolute; /* Ensure it’s positioned correctly */
-  top: 50px; /* Adjust based on where you want it to appear */
-  right: 0; /* Align it to the right of the screen */
-  background-color: #222; /* Dark background for visibility */
-  color: white;
-  width: 350px; /* Set an appropriate width */
-  border: 1px solid #444;
-  border-radius: 5px;
-  padding: 10px;
-  z-index: 1000; /* Make sure it's on top of other elements */
-  display: none; /* Hidden by default, we’ll show it with JS */
+/* Cart Container Styles */
+.cart-container {
+  position: relative;
+  display: inline-block;
 }
 
-.cart-dropdown.show {
-  display: block; /* Show the cart dropdown when triggered */
+.cart-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: black;
+  padding: 0.5rem;
+  position: relative;
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #6B96C3;
+  color: white;
+  font-size: 0.875rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  min-width: 1.5rem;
+  text-align: center;
+}
+
+/* Dropdown Styles */
+.cart-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 400px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.2s ease-in-out;
+  z-index: 50;
+}
+
+.cart-dropdown.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.cart-header h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.cart-items {
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 1rem;
 }
 
 .cart-item {
-  display: flex; /* Align items in a row */
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid #555;
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.cart-item:last-child {
+  border-bottom: none;
 }
 
 .cart-item img {
-  max-width: 80px; /* Adjust size of course image */
-  border-radius: 5px;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
 }
 
-.cart-item p {
-  margin: 0;
+.cart-item-details {
+  flex: 1;
+}
+
+.cart-item-title {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.cart-item-price {
+  color: #6B96C3;
+}
+
+.remove-item {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+  padding: 0.25rem;
+  transition: color 0.2s;
+}
+
+.remove-item:hover {
+  color: #ef4444;
+}
+
+.cart-empty {
+  text-align: center;
+  padding: 2rem;
+  color: #6b7280;
 }
 
 .cart-summary {
-  margin-top: 10px;
+  padding: 1rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.total-row {
+  font-weight: 600;
+  font-size: 1.125rem;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.discount-row {
+  color: #059669;
 }
 
 .checkout-btn {
   width: 100%;
-  padding: 10px;
-  background-color: #336699;
+  padding: 0.75rem;
+  background-color: #6B96C3;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
+  font-size: 1rem;
   cursor: pointer;
+  transition: background-color 0.2s;
+  margin: 1rem;
+  width: calc(100% - 2rem);
 }
 
-.checkout-btn:hover {
-  background-color: #335577;
+.checkout-btn:hover:not(:disabled) {
+  background-color: #5a81aa;
 }
 
+.checkout-btn:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.cart-hidden {
+  display: none;
+}
 
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^Hero Section Layout^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
@@ -321,7 +437,7 @@ body.contactpage {
   background-position: center;
   background-repeat: no-repeat;
   height: 100vh;
-  color: white;
+  /* color: white; */
   font-family: "KoHo", sans-serif;
   animation: transitionIn 0.75s;
 }
@@ -341,7 +457,7 @@ body.contactpage {
 
 .Contactnav-links a {
   text-decoration: none;
-  color: white;
+  color: black;
   font-size: 1.8rem;
   transition: all 0.3s ease;
 }
@@ -455,6 +571,10 @@ body.contactpage {
 /* Add placeholder color */
 ::placeholder {
   color: rgba(255, 255, 255, 0.7);
+}
+
+.contact-info-text{
+  color: white;
 }
 
 

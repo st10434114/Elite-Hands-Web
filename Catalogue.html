@@ -20,7 +20,48 @@
         <div class="nav-links">
             <a href="Contact.html">Contact Us</a>
             <a href="About.html">About</a>
-            <a href="Cart.html">Cart</a>
+            <!-- Dropdown of the Cart -->
+            <div class="cart-container">
+                <button class="cart-trigger">
+                <i class="fas fa-shopping-cart"></i>
+                Cart
+                <span class="cart-count">0</span>
+                </button>
+                
+                <div class="cart-dropdown">
+                <div class="cart-header">
+                    <h3>Shopping Cart</h3>
+                    <span class="cart-items-count">0 items</span>
+                </div>
+                
+                <div class="cart-items">
+                    <!-- Cart items will be dynamically inserted here -->
+                </div>
+                
+                <div class="cart-empty hidden">
+                    <p>Your cart is empty</p>
+                </div>
+                
+                <div class="cart-summary">
+                    <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <span class="subtotal">R0.00</span>
+                    </div>
+                    <div class="summary-row discount-row">
+                    <span>Discount:</span>
+                    <span class="discount">R0.00</span>
+                    </div>
+                    <div class="summary-row total-row">
+                    <span>Total:</span>
+                    <span class="total">R0.00</span>
+                    </div>
+                </div>
+                
+                <button class="checkout-btn" disabled>
+                    Proceed to Checkout
+                </button>
+                </div>
+            </div>            
         </div>
     </nav>
 
@@ -38,6 +79,8 @@
     </div>
 
     <!-- -------------------------------------------------------------------------------------------------------------------- -->
+
+    <script src="cart.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {

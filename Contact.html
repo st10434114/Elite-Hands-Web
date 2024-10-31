@@ -24,13 +24,54 @@
             <div class="dropdown">
                 <a class="clickable" href="#">Our Courses</a>
                 <div class="dropdown-content">
-                    <a href="Catalogue.html?term=short">Short-term course</a>
+                    <a  href="Catalogue.html?term=short">Short-term course</a>
                     <a href="Catalogue.html?term=long">Long-term course</a>
                 </div>
             </div>
             <a class="clickable" href="FAQ.html">FAQ</a>
             <a class="clickable" href="About.html">About</a>
-            <a class="clickable" href="Cart.html">Cart</a>
+            <!-- Dropdown of the Cart -->
+            <div class="cart-container">
+                <button class="cart-trigger">
+                <i class="fas fa-shopping-cart"></i>
+                Cart
+                <span class="cart-count">0</span>
+                </button>
+                
+                <div class="cart-dropdown">
+                <div class="cart-header">
+                    <h3>Shopping Cart</h3>
+                    <span class="cart-items-count">0 items</span>
+                </div>
+                
+                <div class="cart-items">
+                    <!-- Cart items will be dynamically inserted here -->
+                </div>
+                
+                <div class="cart-empty hidden">
+                    <p>Your cart is empty</p>
+                </div>
+                
+                <div class="cart-summary">
+                    <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <span class="subtotal">R0.00</span>
+                    </div>
+                    <div class="summary-row discount-row">
+                    <span>Discount:</span>
+                    <span class="discount">R0.00</span>
+                    </div>
+                    <div class="summary-row total-row">
+                    <span>Total:</span>
+                    <span class="total">R0.00</span>
+                    </div>
+                </div>
+                
+                <button class="checkout-btn" disabled>
+                    Proceed to Checkout
+                </button>
+                </div>
+            </div>            
         </div>
     </nav>
 
@@ -40,9 +81,21 @@
         <div class="ourDetails">
             <h1>Contact Us</h1>
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3579.680411529532!2d28.0413507756489!3d-26.207072577074776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950e985be44add%3A0xfa4a15d862cb4b8b!2s123%20Marshall%20St%2C%20Marshalltown%2C%20Johannesburg%2C%202107!5e0!3m2!1sen!2sza!4v1729782735206!5m2!1sen!2sza" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            <p>📍 123 Marshall Street, Marshalltown, Johannesburg, 2001</p>
-            <p>📞 +1 (555) 123-4567</p>
-            <p>⏰ Sundays - Fridays 8am-5pm</p>
+            <p class="contact-info-text">📍 123 Marshall Street, Marshalltown, Johannesburg, 2001</p>
+            <p class="contact-info-text">📞 +1 (555) 123-4567</p>
+            <p class="contact-info-text">⏰ Sundays - Fridays 8am-5pm</p>
+
+            <div class="social-links">
+                <a href="https://www.facebook.com/" target="_blank">
+                    <img src="icons/facebook_icon.png" alt="" width="50">
+                </a>
+                <a href="https://www.instagram.com/" target="_blank">
+                    <img src="icons/instagram_icon.png" alt="" width="50">
+                </a>
+                <a href="https://x.com/?lang=en" target="_blank">
+                    <img src="icons/twitter_icon.png" alt="" width="50">
+                </a>
+            </div>
         </div>
 
         <div class="LetsChat">
@@ -56,5 +109,7 @@
             </form>
         </div>
     </div>
+
+    <script src="cart.js"></script>
 </body>
 </html>

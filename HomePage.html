@@ -26,46 +26,49 @@
             <a href="FAQ.html">FAQ</a>
             <a href="Contact.html">Contact Us</a>
             <a href="About.html">About</a>
-            <!-- <a href="Cart.html">Cart</a> -->
-            <button class="cart-button">Cart</button>
 
-            <div class="cart-dropdown">
-                <div class="cart-item">
-                    <img src="course-image.jpg" alt="Course Image">
-                    <div>
-                        <p>Landscaping Course</p>
-                        <p>R1499,99</p>
-                    </div>
-                    <button class="delete-btn">Delete</button>
-                </div>
-            
-                <div class="cart-summary">
-                    <p>SubTotal: <span id="subtotal">R0,00</span></p>
-                    <p>Discount: <span id="discount">R0,00</span></p>
-                    <p>Total: <span id="total">R0,00</span></p>
-                </div>
-            
-                <button class="checkout-btn">Checkout</button>
-            </div>
-            <!-- <div id="cartDropdown" class="cart-dropdown">
+            <!-- Dropdown of the Cart -->
+            <div class="cart-container">
+                <button class="cart-trigger">
+                <i class="fas fa-shopping-cart"></i>
+                Cart
+                <span class="cart-count">0</span>
+                </button>
+                
+                <div class="cart-dropdown">
                 <div class="cart-header">
-                    <span class="cart-title">Cart</span>
-                    <span class="close-cart-btn" onclick="closeCart()">X</span>
+                    <h3>Shopping Cart</h3>
+                    <span class="cart-items-count">0 items</span>
                 </div>
-                <div class="cart-item">
-                    <img src="path-to-your-image.jpg" alt="Landscaping course" class="cart-item-image">
-                    <div class="cart-item-details">
-                        <h4>LandScaping course</h4>
-                        <p>R1499,99</p>
-                        <button class="delete-cart-item" onclick="removeFromCart(0)">Delete</button>
+                
+                <div class="cart-items">
+                    <!-- Cart items will be dynamically inserted here -->
+                </div>
+                
+                <div class="cart-empty cart-hidden">
+                    <p>Your cart is empty</p>
+                </div>
+                
+                <div class="cart-summary">
+                    <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <span class="subtotal">R0.00</span>
+                    </div>
+                    <div class="summary-row discount-row">
+                    <span>Discount:</span>
+                    <span class="discount">R0.00</span>
+                    </div>
+                    <div class="summary-row total-row">
+                    <span>Total:</span>
+                    <span class="total">R0.00</span>
                     </div>
                 </div>
-                <div class="cart-summary">
-                    <p>SubTotal: <span id="subtotal">R1499,99</span></p>
-                    <p>Discount: <span id="discount">R0,00</span></p>
+                
+                <button class="checkout-btn" disabled>
+                    Proceed to Checkout
+                </button>
                 </div>
-                <button class="checkout-btn">Checkout</button>
-            </div> -->
+            </div>            
         </div>
     </nav>
     <main class="hero">
@@ -146,8 +149,29 @@
     </section>
 
     <footer>
+        <div class="ourDetails">
+            <h1>Contact Us</h1>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3579.680411529532!2d28.0413507756489!3d-26.207072577074776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950e985be44add%3A0xfa4a15d862cb4b8b!2s123%20Marshall%20St%2C%20Marshalltown%2C%20Johannesburg%2C%202107!5e0!3m2!1sen!2sza!4v1729782735206!5m2!1sen!2sza" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <p class="contact-info-text">📍 123 Marshall Street, Marshalltown, Johannesburg, 2001</p>
+            <p class="contact-info-text">📞 +1 (555) 123-4567</p>
+            <p class="contact-info-text">⏰ Sundays - Fridays 8am-5pm</p>
+
+            <div class="social-links">
+                <a href="https://www.facebook.com/" target="_blank">
+                    <img src="icons/facebook_icon.png" alt="" width="50">
+                </a>
+                <a href="https://www.instagram.com/" target="_blank">
+                    <img src="icons/instagram_icon.png" alt="" width="50">
+                </a>
+                <a href="https://x.com/?lang=en" target="_blank">
+                    <img src="icons/twitter_icon.png" alt="" width="50">
+                </a>
+            </div>
+        </div>
         <p>&copy; 2024 Elite Hands Academy. All rights reserved.</p>
     </footer>
+
+    <script src="cart.js"></script>
 
     <script>
         // Javascript for the button click handling
@@ -176,85 +200,6 @@
 
         const hiddenElements = document.querySelectorAll('.hidden');
         hiddenElements.forEach((el) => observer.observe(el));
-
-
-        // ----------------------------------------------------------
-        // Cart data and display functions
-        function updateCart() {
-            // Retrieve cart items from localStorage
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const cartItems = document.getElementById('cartItems');
-            const totalPriceEl = document.getElementById('totalPrice');
-            const discountEl = document.getElementById('discount');
-            const finalPriceEl = document.getElementById('finalPrice');
-
-            cartItems.innerHTML = '';
-            let total = 0;
-
-            // Populate cart items list
-            cart.forEach(course => {
-                total += course.price;
-                const li = document.createElement('li');
-                li.textContent = `${course.title} - R${course.price.toFixed(2)}`;
-                cartItems.appendChild(li);
-            });
-
-            // Calculate discount and final price
-            const discount = calculateDiscount(cart.length);
-            const finalPrice = total * (1 - discount);
-
-            // Update display elements
-            totalPriceEl.textContent = `Total: R${total.toFixed(2)}`;
-            discountEl.textContent = `Discount: ${(discount * 100).toFixed(0)}%`;
-            finalPriceEl.textContent = `Final Price: R${finalPrice.toFixed(2)}`;
-        }
-
-        function calculateDiscount(courseCount) {
-            if (courseCount >= 3) {
-                return 0.15; // 15% discount for 3+ courses
-            } else if (courseCount === 2) {
-                return 0.10; // 10% discount for 2 courses
-            } else if (courseCount === 1) {
-                return 0.05; // 5% discount for 1 course
-            }
-            return 0;
-        }
-
-        // Initialize cart display on page load
-        document.addEventListener('DOMContentLoaded', updateCart);
-
-        // -----------------------------------------------------------------------------
-        // Show the cart dropdown
-        function openCart() {
-            document.getElementById("cartDropdown").style.display = "block";
-        }
-
-        // Close the cart dropdown
-        function closeCart() {
-            document.getElementById("cartDropdown").style.display = "none";
-        }
-
-        // Add this function to remove an item from the cart
-        function removeFromCart(index) {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart.splice(index, 1);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            
-            // Update cart display or remove item
-            updateCart();
-        }
-
-        // Function to toggle cart dropdown visibility
-        function toggleCartDropdown() {
-            const cartDropdown = document.querySelector('.cart-dropdown');
-            cartDropdown.classList.toggle('show');
-        }
-
-        // Add event listener for the cart button
-        document.querySelector('.cart-button').addEventListener('click', toggleCartDropdown);
-
-
-
     </script>
 </body>
 </html>
